@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <center>
+      <AnchorPane>
+         <children>
+            <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="14.0" prefHeight="627.0" prefWidth="300.0" text="My Projects" AnchorPane.bottomAnchor="161.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="587.0" prefWidth="298.0">
+                     <children>
+                        <TextField layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="269.0" promptText="Seach" />
+                        <ScrollPane layoutX="15.0" layoutY="86.0" prefHeight="431.0" prefWidth="269.0" style="-fx-fit-to-height: true; -fx-fit-to-width: true;">
+                           <content>
+                              <ListView fx:id="lstviewProject" prefHeight="200.0" prefWidth="200.0" />
+                           </content>
+                        </ScrollPane>
+                        <Button defaultButton="true" layoutX="14.0" layoutY="50.0" mnemonicParsing="false" text="Add Project">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="PLUS" size="12" />
+                           </graphic>
+                        </Button>
+                        <Button layoutX="213.0" layoutY="50.0" mnemonicParsing="false" text="Delete">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="CLOSE" size="12" text="" />
+                           </graphic>
+                        </Button>
+                        <Button layoutX="149.0" layoutY="50.0" mnemonicParsing="false" text="Edit">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="BORDER_COLOR" />
+                           </graphic>
+                        </Button>
+                        <Button layoutX="175.0" layoutY="528.0" mnemonicParsing="false" text="Select Project">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="CHECK" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TitledPane>
+            <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="726.0" prefHeight="132.0" prefWidth="300.0" text="Report" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button defaultButton="true" layoutX="35.0" layoutY="37.0" mnemonicParsing="false" text="Print Report">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="PRINTER" size="12" />
+                           </graphic>
+                        </Button>
+                        <Button layoutX="145.0" layoutY="37.0" mnemonicParsing="false" text="Report Settings">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="SETTINGS" size="12" />
+                           </graphic>
+                        </Button>
+                     </children></AnchorPane>
+              </content>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TitledPane>
+            <SplitPane dividerPositions="0.6812366737739872" layoutX="326.0" layoutY="14.0" pickOnBounds="false" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="326.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+               <items>
+                  <TabPane prefHeight="745.0" prefWidth="648.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab text="Project">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="716.0" prefWidth="617.0">
+                                 <children>
+                                    <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="14.0" prefHeight="203.0" prefWidth="606.0" text="Project">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="604.0">
+                                             <children>
+                                                <GridPane layoutX="14.0" layoutY="11.0" prefHeight="124.0" prefWidth="576.0">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.0" minWidth="10.0" prefWidth="148.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="461.0" minWidth="10.0" prefWidth="416.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <Label text="Project Name:" />
+                                                      <Label text="Project Address:" GridPane.rowIndex="1" />
+                                                      <Label text="Project Description:" GridPane.rowIndex="2" />
+                                                      <Label text="Project Notes:" GridPane.rowIndex="3" />
+                                                      <TextField prefHeight="25.0" prefWidth="439.0" text="Two-Storey w/ Balcony (90 sqm. Bldg., 72sqm. Lot" GridPane.columnIndex="1" />
+                                                      <TextField prefHeight="25.0" prefWidth="434.0" text="Danber Ville Subd., Pallocan East, Batangas City" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <TextField promptText="Add project description here" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <TextField promptText="Add project notes here" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                   </children>
+                                                </GridPane>
+                                                <Button defaultButton="true" layoutX="510.0" layoutY="145.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Save">
+                                                   <graphic>
+                                                      <MaterialDesignIconView glyphName="CHECK" />
+                                                   </graphic></Button>
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                    </TitledPane>
+                                    <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="243.0" prefHeight="210.0" prefWidth="606.0" text="Customer">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <GridPane layoutX="14.0" layoutY="14.0" prefHeight="124.0" prefWidth="575.0">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.0" minWidth="10.0" prefWidth="152.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="461.0" minWidth="10.0" prefWidth="416.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <Label text="Customer Name:" />
+                                                      <Label text="Customer Address:" GridPane.rowIndex="1" />
+                                                      <Label prefHeight="17.0" prefWidth="140.0" text="Customer Contact Details:" GridPane.rowIndex="2" />
+                                                      <Label text="Customer Notes:" GridPane.rowIndex="3" />
+                                                      <TextField text="John Doe" GridPane.columnIndex="1" />
+                                                      <TextField text="930 LaVergne LnLa Vergne, TN 37086" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <TextField text="(800)555-0199" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <TextField promptText="Add customer notes here" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                   </children>
+                                                </GridPane>
+                                                <Button defaultButton="true" layoutX="510.0" layoutY="145.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Save">
+                                                   <graphic>
+                                                      <MaterialDesignIconView glyphName="CHECK" />
+                                                   </graphic></Button>
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
+                                    <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="473.0" prefHeight="210.0" prefWidth="606.0" text="Estimator">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <GridPane layoutX="14.0" layoutY="15.0" prefHeight="123.0" prefWidth="575.0">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.0" minWidth="10.0" prefWidth="149.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="461.0" minWidth="10.0" prefWidth="416.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <Label text="Estimator Name:" />
+                                                      <Label text="Estimator Address:" GridPane.rowIndex="1" />
+                                                      <Label prefHeight="17.0" prefWidth="140.0" text="Estimator Contact Datails:" GridPane.rowIndex="2" />
+                                                      <Label text="Estimator Notes:" GridPane.rowIndex="3" />
+                                                      <TextField prefHeight="25.0" prefWidth="426.0" text="Mark Cabara" GridPane.columnIndex="1" />
+                                                      <TextField text="123 Main StAnywhere, CA 12345" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <TextField text=" (800)555-0199" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <TextField promptText="Add estimator notes here" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                   </children>
+                                                </GridPane>
+                                                <Button defaultButton="true" layoutX="510.0" layoutY="145.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Save">
+                                                   <graphic>
+                                                      <MaterialDesignIconView glyphName="CHECK" />
+                                                   </graphic></Button>
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab text="Estimate">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TitledPane animated="false" collapsible="false" layoutX="15.0" layoutY="104.0" prefHeight="275.0" prefWidth="606.0" text="Schedules of Work">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="257.0" prefWidth="604.0">
+                                             <children>
+                                                <ScrollPane layoutX="11.0" layoutY="48.0" prefHeight="188.0" prefWidth="578.0">
+                                                   <content>
+                                                      <TableView fx:id="tblSchedule" editable="true" prefHeight="186.0" prefWidth="576.0">
+                                                        <columns>
+                                                          <TableColumn fx:id="clmNumberSchedule" prefWidth="32.0" text="#" />
+                                                          <TableColumn fx:id="clmDescSchedule" prefWidth="543.0" text="Description" />
+                                                        </columns>
+                                                      </TableView>
+                                                   </content>
+                                                </ScrollPane>
+                                                <ComboBox fx:id="cmbStageSchedule" editable="true" layoutX="11.0" layoutY="14.0" prefHeight="25.0" prefWidth="115.0" promptText="Select Stage" />
+                                                <Button defaultButton="true" layoutX="363.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="146.0" text="Add Work Schedule">
+                                                   <graphic>
+                                                      <MaterialDesignIconView glyphName="PLUS" text="" />
+                                                   </graphic>
+                                                </Button>
+                                                <Button layoutX="514.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Delete">
+                                                   <graphic>
+                                                      <MaterialDesignIconView glyphName="CLOSE" />
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                    </TitledPane>
+                                    <TitledPane animated="false" collapsible="false" layoutX="15.0" layoutY="395.0" prefHeight="307.0" prefWidth="606.0" text="Materials">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="308.0" prefWidth="604.0">
+                                             <children>
+                                                <Button defaultButton="true" layoutX="343.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="Add Material">
+                                                   <graphic>
+                                                      <MaterialDesignIconView glyphName="PLUS" />
+                                                   </graphic></Button>
+                                                <Button layoutX="460.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="Edit">
+                                                   <graphic>
+                                                      <MaterialDesignIconView glyphName="BORDER_COLOR" />
+                                                   </graphic></Button>
+                                                <ScrollPane layoutX="10.0" layoutY="51.0" prefHeight="188.0">
+                                                   <content>
+                                                      <TableView fx:id="tblMaterial" prefHeight="186.0" prefWidth="579.0">
+                                                        <columns>
+                                                          <TableColumn fx:id="clmQtyMaterial" prefWidth="26.0" text="#" />
+                                                          <TableColumn fx:id="clmUnitMaterial" prefWidth="156.0" text="Workers Name" />
+                                                            <TableColumn fx:id="clmDescMaterial" prefWidth="104.0" text="Position" />
+                                                            <TableColumn fx:id="clmUnitCostMaterial" prefWidth="99.0" text="Unit Cost" />
+                                                            <TableColumn fx:id="clmTotalCostMaterial" prefWidth="118.0" text="Total Cost" />
+                                                        </columns>
+                                                      </TableView>
+                                                   </content>
+                                                </ScrollPane>
+                                                <Button layoutX="521.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Delete">
+                                                   <graphic>
+                                                      <MaterialDesignIconView glyphName="CLOSE" />
+                                                   </graphic></Button>
+                                                <ComboBox fx:id="cmbStageMaterial" editable="true" layoutX="10.0" layoutY="14.0" prefHeight="25.0" prefWidth="115.0" promptText="Select Stage" />
+                                                <Label layoutX="422.0" layoutY="19.0" />
+                                                <TextField alignment="CENTER_RIGHT" layoutX="255.0" layoutY="247.0" promptText="0" />
+                                                <Label layoutX="201.0" layoutY="251.0" text="Subtotal" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
+                                    <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="14.0" prefHeight="74.0" prefWidth="606.0" text="Stages">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <Button defaultButton="true" layoutX="253.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="162.0" text="Set Number of Stages">
+                                                   <graphic>
+                                                      <MaterialDesignIconView glyphName="BORDER_COLOR" />
+                                                   </graphic>
+                                                </Button>
+                                                <Spinner fx:id="spnrStage" editable="true" layoutX="190.0" layoutY="12.0" prefHeight="25.0" prefWidth="55.0" />
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                    </TitledPane>
+                                 </children></AnchorPane>
+                          </content>
+                        </Tab>
+                        <Tab text="Summary">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="14.0" prefHeight="668.0" prefWidth="608.0" text="Summary">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="638.0" prefWidth="606.0">
+                                             <children>
+                                                <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="14.0" prefHeight="263.0" prefWidth="580.0" text="Chart">
+                                                   <content>
+                                                      <PieChart fx:id="chart" prefHeight="231.0" prefWidth="578.0" style="-fx-background-color: #fff;" />
+                                                   </content>
+                                                </TitledPane>
+                                                <ScrollPane layoutX="14.0" layoutY="293.0">
+                                                   <content>
+                                                      <TableView prefHeight="333.0" prefWidth="580.0">
+                                                        <columns>
+                                                          <TableColumn prefWidth="284.0" text="Category" />
+                                                          <TableColumn prefWidth="295.0" text="Cost" />
+                                                        </columns>
+                                                      </TableView>
+                                                   </content>
+                                                </ScrollPane>
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                    </TitledPane>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+                  <Accordion prefHeight="558.0" prefWidth="305.0" SplitPane.resizableWithParent="false">
+                    <panes>
+                      <TitledPane text="Costbook">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField layoutX="11.0" layoutY="14.0" prefHeight="27.0" prefWidth="282.0" promptText="Search" AnchorPane.leftAnchor="-1.1999999999999886" AnchorPane.rightAnchor="4.0" />
+                                    <Button defaultButton="true" layoutX="14.0" layoutY="50.0" mnemonicParsing="false" text="Add Material">
+                                       <graphic>
+                                          <MaterialDesignIconView glyphName="PLUS" />
+                                       </graphic>
+                                    </Button>
+                                    <Button layoutX="210.0" layoutY="50.0" mnemonicParsing="false" text="Delete">
+                                       <graphic>
+                                          <MaterialDesignIconView glyphName="CLOSE" />
+                                       </graphic>
+                                    </Button>
+                                    <Button layoutX="158.0" layoutY="50.0" mnemonicParsing="false" text="Edit" AnchorPane.rightAnchor="82.0">
+                                       <graphic>
+                                          <MaterialDesignIconView glyphName="BORDER_COLOR" />
+                                       </graphic>
+                                    </Button>
+                                    <ScrollPane layoutX="12.0" layoutY="85.0" prefHeight="584.0" style="-fx-fit-to-height: true; -fx-fit-to-width: true;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="73.79999999999995">
+                                       <content>
+                                          <ListView fx:id="lstMaterial" prefHeight="200.0" prefWidth="200.0" />
+                                       </content>
+                                    </ScrollPane>
+                                 </children></AnchorPane>
+                        </content>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                      </TitledPane>
+                      <TitledPane expanded="false" text="Calculator">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Button layoutX="11.0" layoutY="59.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="66.0" text="7">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="82.0" layoutY="59.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="67.0" text="8">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="156.0" layoutY="59.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="67.0" text="9">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="229.0" layoutY="59.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="68.0" text="/" AnchorPane.leftAnchor="219.0" AnchorPane.rightAnchor="1.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="12.0" layoutY="116.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="65.0" text="4">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="84.0" layoutY="116.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="64.0" text="5">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="157.0" layoutY="116.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="66.0" text="6">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="12.0" layoutY="176.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="65.0" text="3">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="84.0" layoutY="176.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="65.0" text="2">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="158.0" layoutY="176.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="65.0" text="1">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="12.0" layoutY="235.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="65.0" text=".">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="84.0" layoutY="235.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="65.0" text="0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button defaultButton="true" layoutX="159.0" layoutY="235.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="64.0" text="=">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="229.0" layoutY="116.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="68.0" text="*" AnchorPane.leftAnchor="219.0" AnchorPane.rightAnchor="1.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="230.0" layoutY="176.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="68.0" text="-" AnchorPane.leftAnchor="219.0" AnchorPane.rightAnchor="1.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="228.0" layoutY="235.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="70.0" text="+" AnchorPane.leftAnchor="219.0" AnchorPane.rightAnchor="1.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <TextField alignment="CENTER_RIGHT" layoutX="14.0" layoutY="14.0" prefHeight="34.0" prefWidth="283.0" promptText="0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <TitledPane animated="false" collapsible="false" layoutX="11.0" layoutY="295.0" prefHeight="353.0" prefWidth="275.0" text="History">
+                                       <content>
+                                          <ScrollPane>
+                                             <content>
+                                                <TextArea editable="false" prefHeight="325.0" prefWidth="273.0" />
+                                             </content>
+                                          </ScrollPane>
+                                       </content>
+                                    </TitledPane>
+                                 </children></AnchorPane>
+                        </content>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                      </TitledPane>
+                      <TitledPane expanded="false" text="Notes">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ScrollPane layoutX="14.0" layoutY="14.0">
+                                       <content>
+                                          <TextArea prefHeight="590.0" prefWidth="267.0" />
+                                       </content>
+                                    </ScrollPane>
+                                    <Button defaultButton="true" layoutX="205.0" layoutY="614.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="77.0" text="Save">
+                                       <graphic>
+                                          <MaterialDesignIconView glyphName="CHECK" />
+                                       </graphic>
+                                    </Button>
+                                 </children></AnchorPane>
+                        </content>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                      </TitledPane>
+                    </panes>
+                  </Accordion>
+               </items>
+            </SplitPane>
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Exit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Database">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Check Database" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="User Manual" />
+                  <MenuItem mnemonicParsing="false" text="About Construction Cost Estimate" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
