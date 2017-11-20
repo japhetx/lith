@@ -17,6 +17,7 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
@@ -48,12 +49,12 @@ public class Main extends Application {
 			  Class.forName("com.mysql.jdbc.Driver");
 
 			  // Open a connection
-			  System.out.println("Connecting to a selected database...");
+			  //System.out.println("Connecting to a selected database...");
 			  conn = DriverManager.getConnection(DB_URL, USER, PASS);
-			  System.out.println("Connected database successfully...");
+			  //System.out.println("Connected database successfully...");
 
 		      // Execute a query
-		      System.out.println("Creating statement...");
+		      //System.out.println("Creating statement...");
 		      stmt = conn.createStatement();
 
 		      String sql = "SELECT * FROM login";
@@ -86,7 +87,9 @@ public class Main extends Application {
 
 			  // Create the custom dialog.
 			  Dialog<Pair<String, String>> dialog = new Dialog<>();
-			  dialog.setTitle("Construction Cost Estimate");
+			  dialog.setTitle("Edres Construction & Supply | Construction Cost Estimate");
+			  Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+			  stage.getIcons().add(new Image(this.getClass().getResource("icon.png").toString()));
 			  dialog.setHeaderText("Please Sign in to continue...");
 
 			  // Set the icon (must be included in the project).
@@ -114,6 +117,15 @@ public class Main extends Application {
 			  grid.add(new Label("Password:"), 0, 1);
 			  grid.add(password, 1, 1);
 
+			  // Enable/Disable login button depending on whether a username was entered.
+			  Node loginButton = dialog.getDialogPane().lookupButton(loginButtonType);
+			  loginButton.setDisable(true);
+
+			  // Do some validation (using the Java 8 lambda syntax).
+			  username.textProperty().addListener((observable, oldValue, newValue) -> {
+			      loginButton.setDisable(newValue.trim().isEmpty());
+			  });
+
 			  dialog.getDialogPane().setContent(grid);
 
 			  // Request focus on the username field by default.
@@ -137,10 +149,13 @@ public class Main extends Application {
 					  primaryStage.setScene(scene);
 					  primaryStage.resizableProperty().setValue(Boolean.FALSE);
 					  primaryStage.setTitle("Edres Construction & Supply | Construction Cost Estimate");
+					  primaryStage.getIcons().add(new Image("/application/icon.png"));
 					  primaryStage.show();
 
 				  } else {
 					  Alert alert = new Alert(AlertType.ERROR);
+					  Stage stagealert = (Stage) alert.getDialogPane().getScene().getWindow();
+					  stagealert.getIcons().add(new Image(this.getClass().getResource("icon.png").toString()));
 					  alert.setTitle("Edres Construction & Supply | Construction Cost Estimate");
 					  alert.setHeaderText("Sign in Error.");
 					  alert.setContentText("Ooops, wrong username and password!");

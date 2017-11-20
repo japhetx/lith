@@ -36,9 +36,9 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="587.0" prefWidth="298.0">
                      <children>
                         <TextField layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="269.0" promptText="Seach" />
-                        <ScrollPane layoutX="15.0" layoutY="86.0" prefHeight="431.0" prefWidth="269.0" style="-fx-fit-to-height: true; -fx-fit-to-width: true;">
+                        <ScrollPane layoutX="15.0" layoutY="86.0" prefHeight="439.0" prefWidth="269.0" style="-fx-fit-to-height: true; -fx-fit-to-width: true;">
                            <content>
-                              <ListView fx:id="lstviewProject" prefHeight="200.0" prefWidth="200.0" />
+                              <ListView fx:id="lstviewProject" prefHeight="445.0" prefWidth="267.0" />
                            </content>
                         </ScrollPane>
                         <Button defaultButton="true" layoutX="14.0" layoutY="50.0" mnemonicParsing="false" text="Add Project">
@@ -56,7 +56,7 @@
                               <MaterialDesignIconView glyphName="BORDER_COLOR" />
                            </graphic>
                         </Button>
-                        <Button layoutX="175.0" layoutY="528.0" mnemonicParsing="false" text="Select Project">
+                        <Button layoutX="178.0" layoutY="533.0" mnemonicParsing="false" text="Select Project">
                            <graphic>
                               <MaterialDesignIconView glyphName="CHECK" />
                            </graphic>
@@ -491,18 +491,17 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Exit" />
+              <MenuItem fx:id="menuExit" mnemonicParsing="false" onAction="#clickExit" text="Exit" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Database">
             <items>
-              <MenuItem mnemonicParsing="false" text="Check Database" />
+              <MenuItem fx:id="menuDb" mnemonicParsing="false" onAction="#clickDb" text="Check Database" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="User Manual" />
-                  <MenuItem mnemonicParsing="false" text="About Construction Cost Estimate" />
+                  <MenuItem fx:id="menuAbout" mnemonicParsing="false" onAction="#clickAbout" text="About Construction Cost Estimate" />
             </items>
           </Menu>
         </menus>
