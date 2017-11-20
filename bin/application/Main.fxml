@@ -41,22 +41,22 @@
                               <ListView fx:id="lstviewProject" prefHeight="445.0" prefWidth="267.0" />
                            </content>
                         </ScrollPane>
-                        <Button defaultButton="true" layoutX="14.0" layoutY="50.0" mnemonicParsing="false" text="Add Project">
+                        <Button fx:id="btnAddProject" defaultButton="true" layoutX="14.0" layoutY="50.0" mnemonicParsing="false" onAction="#clickAdd" text="Add Project">
                            <graphic>
                               <MaterialDesignIconView glyphName="PLUS" size="12" />
                            </graphic>
                         </Button>
-                        <Button layoutX="213.0" layoutY="50.0" mnemonicParsing="false" text="Delete">
+                        <Button fx:id="btnDeletProject" layoutX="213.0" layoutY="50.0" mnemonicParsing="false" onAction="#clickDelete" text="Delete">
                            <graphic>
                               <MaterialDesignIconView glyphName="CLOSE" size="12" text="" />
                            </graphic>
                         </Button>
-                        <Button layoutX="149.0" layoutY="50.0" mnemonicParsing="false" text="Edit">
+                        <Button fx:id="btnEditProject" layoutX="149.0" layoutY="50.0" mnemonicParsing="false" onAction="#clickEdit" text="Edit">
                            <graphic>
                               <MaterialDesignIconView glyphName="BORDER_COLOR" />
                            </graphic>
                         </Button>
-                        <Button layoutX="178.0" layoutY="533.0" mnemonicParsing="false" text="Select Project">
+                        <Button fx:id="btnSelectProject" layoutX="178.0" layoutY="533.0" mnemonicParsing="false" onAction="#clickSelect" text="Select Project">
                            <graphic>
                               <MaterialDesignIconView glyphName="CHECK" />
                            </graphic>

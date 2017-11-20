@@ -6,7 +6,9 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.application.Platform;
@@ -28,6 +30,7 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
@@ -36,7 +39,7 @@ import javafx.stage.Stage;
 
 public class MainController implements Initializable {
 
-	// pie chart
+	//pie chart
 	@FXML
 	PieChart chart;
 
@@ -50,18 +53,17 @@ public class MainController implements Initializable {
             new PieChart.Data("Stage 6", 113320.00)
             );
 
-	// list project
+	//list project
 	@FXML
 	ListView<String> lstviewProject;
 
-	ObservableList<String> listProject = FXCollections.observableArrayList("Two-Storey Subd.,"
-			+ " w/ Balcony(90 sqm. Bldg., 72sqm. Lot)");
+	ObservableList<String> listProject = FXCollections.observableArrayList();
 
 	//spinner stage
 	@FXML
 	Spinner<Integer> spnrStage;
 
-	// combo sched
+	//combo sched
 	@FXML
 	ComboBox<String> cmbStageSchedule;
 
@@ -82,6 +84,7 @@ public class MainController implements Initializable {
 		        "Stage 2",
 		        "Stage 3"
 		    );
+
 	//table schedule
 	@FXML
 	TableView<Schedule> tblSchedule;
@@ -97,7 +100,7 @@ public class MainController implements Initializable {
 			new Schedule (2, "Excavation")
 			);
 
-	// table material
+	//table material
 	@FXML
     private TableView<Material> tblMaterial;
 
@@ -121,7 +124,7 @@ public class MainController implements Initializable {
 			new Material (2, "Bert", "Carpenter", 750, 9000)
 			);
 
-    // listview material
+    //listview material
     @FXML
 	ListView<String> lstMaterial;
 
@@ -142,9 +145,22 @@ public class MainController implements Initializable {
 
     //Database
   	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-  	static final String DB_URL = "jdbc:mysql://localhost/testlogin";
+  	static final String DB_URL = "jdbc:mysql://localhost/systemedres";
   	static final String USER = "root";
   	static final String PASS = "";
+
+  	//My Project buttons
+    @FXML
+    private Button btnAddProject;
+
+    @FXML
+    private Button btnDeletProject;
+
+    @FXML
+    private Button btnEditProject;
+
+    @FXML
+    private Button btnSelectProject;
 
 
 	@Override
@@ -182,6 +198,40 @@ public class MainController implements Initializable {
 
 		// list costbook
 		lstMaterial.setItems(listCostbook);
+
+		// list project from database
+		try {
+			Connection conn = null;
+			Statement stmt = null;
+
+			// Register JDBC driver
+			Class.forName("com.mysql.jdbc.Driver");
+
+			// Open a connection
+			conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+			// Execute a query
+			stmt = conn.createStatement();
+
+			String sql = "SELECT * FROM projectinfo";
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while(rs.next()){
+				lstviewProject.getItems().add(rs.getString("ProjName"));
+			}
+
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		//List Project Select 0 at start
+		lstviewProject.getSelectionModel().select(0);
+
 	}
 
 	// menu Exit
@@ -266,6 +316,96 @@ public class MainController implements Initializable {
 		alert.setContentText("Computerized Construction Cost Estimate for EDRES & Construction Supply");
 
 		alert.showAndWait();
+	}
+
+	public void clickAdd(ActionEvent event) throws Exception {
+		Optional<String> result;
+
+		TextInputDialog dialog = new TextInputDialog();
+
+		Stage stagealert = (Stage) dialog.getDialogPane().getScene().getWindow();
+		stagealert.getIcons().add(new Image(this.getClass().getResource("icon.png").toString()));
+		dialog.setTitle("Edres Construction & Supply | Construction Cost Estimate");
+
+		dialog.setHeaderText("Project Name");
+		dialog.setContentText("Please enter name for the project:");
+		Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+
+		result = dialog.showAndWait();
+
+		if(result.isPresent()){
+
+		// Database
+		Connection conn = null;
+		Statement stmt = null;
+
+		// Register JDBC driver
+		Class.forName("com.mysql.jdbc.Driver");
+
+		// Open a connection
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+		// Execute a query
+		stmt = conn.createStatement();
+
+		String sql = "INSERT INTO `projectinfo` (`ProjectID`, `ProjName`, `ProjAddr`, `ProjDesc`, `ProjNote`, `CustName`, `CustAddr`, `CustNum`, `CustNote`, `UserName`, `UserAddr`, `UserNum`, `UserNote`) VALUES (NULL, '" + result.get() + "', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)";
+
+		stmt.executeUpdate(sql);
+
+		//Show result to table
+		lstviewProject.getItems().add(result.get());
+		}
+
+
+	}
+
+	public void clickEdit(ActionEvent event) throws Exception {
+		Optional<String> result;
+
+		TextInputDialog dialog = new TextInputDialog(lstviewProject.getSelectionModel().getSelectedItem());
+
+		Stage stagealert = (Stage) dialog.getDialogPane().getScene().getWindow();
+		stagealert.getIcons().add(new Image(this.getClass().getResource("icon.png").toString()));
+		dialog.setTitle("Edres Construction & Supply | Construction Cost Estimate");
+
+		dialog.setHeaderText("Edit Project Name");
+		dialog.setContentText("Please enter name for the project:");
+
+		result = dialog.showAndWait();
+
+		Integer select = lstviewProject.getSelectionModel().getSelectedIndex() + 1;
+
+		if(result.isPresent()){
+
+		// Database
+		Connection conn = null;
+		Statement stmt = null;
+
+		// Register JDBC driver
+		Class.forName("com.mysql.jdbc.Driver");
+
+		// Open a connection
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+		// Execute a query
+		stmt = conn.createStatement();
+
+		String sql = "UPDATE `projectinfo` SET ProjName = '" + result.get() +"' WHERE `ProjectID` = '" + select +"'";
+
+		stmt.executeUpdate(sql);
+
+		}
+		String sresult = result.get().trim();
+		lstviewProject.getItems().set(lstviewProject.getSelectionModel().getSelectedIndex(),sresult);
+
+	}
+
+	public void clickDelete(ActionEvent event) throws Exception {
+
+	}
+
+	public void clickSelect(ActionEvent event) throws Exception {
+
 	}
 
 

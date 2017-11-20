@@ -30,7 +30,7 @@ public class Main extends Application {
 
 	//Database
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://localhost/testlogin";
+	static final String DB_URL = "jdbc:mysql://localhost/systemedres";
 	static final String USER = "root";
 	static final String PASS = "";
 
@@ -62,8 +62,8 @@ public class Main extends Application {
 
 		      while(rs.next()){
 		    	//Retrieve by column name
-		          usernameX = rs.getString("username");
-		          passwordX = rs.getString("password");
+		          usernameX = rs.getString("user");
+		          passwordX = rs.getString("pass");
 		      }
 
 		      }catch(SQLException se){
@@ -81,7 +81,7 @@ public class Main extends Application {
 			  se.printStackTrace();
 			  }//end finally try
 			  }//end try
-			  System.out.println("Goodbye!");
+			  //System.out.println("Goodbye!");
 
 			  ///
 
